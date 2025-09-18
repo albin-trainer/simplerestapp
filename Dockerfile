@@ -12,7 +12,7 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Step 3: Copy jar file into container
-COPY target/my-rest-api-app-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=build /app/target/my-rest-api-app-0.0.1-SNAPSHOT.jar app.jar
 
 # Step 4: Run the Spring Boot app
 ENTRYPOINT ["java", "-jar", "app.jar"]
